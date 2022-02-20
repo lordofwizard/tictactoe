@@ -23,20 +23,31 @@ impl Run{
             println!("{}",input);
             if input.trim() == "exit" {
                 game_state = false;
-            } 
+            }
+            Run::game(self);
         }
-
     }
     fn clear_screen(){
         print!("{esc}c", esc = 27 as char);
     }
     fn welcome(){
+        // Basic run screen
         use colored::Colorize;
         println!("{}","     Welcome to Tic-Tac-Toe".blue());
         println!("\n \n");
         println!("The rules are simple. This is a 2 player tictactoe game..\n One with a row/column of same element wins.\n For more documentation refer to \n https://github.com/lordofwizard/tictactoe.git");
         println!("{} {}","Project Author :-".yellow(),"LordOfWizard".red());
+    }
+    fn help(){
+        Run::clear_screen();
+        println!("Commands to play this game");
+        println!("start - Starts the game.. obi");
+        println!("exit - Stops the game and closes it");
 
+    }
+    fn game(&self){
+        self.board_instance.print_board();
+        
     }
     
 }
