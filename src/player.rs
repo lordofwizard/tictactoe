@@ -1,11 +1,11 @@
-pub mod Player{
-    enum Type{
-        TypeX = 'X',
-        TypeO = 'O'
+pub mod player{
+    pub enum Type{
+        TypeX,
+        TypeO
     }
     pub struct Player{
-        name: String,
-        char_type: Type,
-        no_of_win: u8
+        pub name: String,
+        pub char_type: Type,
+        pub no_of_win: u8
     }
 }

@@ -4,7 +4,7 @@ pub mod game{
         // Struct that stores a Board Array of 3x3
         // Which has characters stores init mainly 
         // ' ' Or 'X' 'O'
-        board : [[char;3];3],
+        pub board : [[char;3];3],
     }
     impl Board{
         pub fn new() -> Self{
@@ -49,6 +49,7 @@ pub mod game{
             temp_board[row-1][col-1] = 'O';
             self.board = temp_board;
         }
+        #[allow(dead_code)]
         pub fn filled_check(&self) -> bool{
             for i in 0..3{
                 for j in 0..3{
@@ -59,6 +60,7 @@ pub mod game{
             }
             true
         }
+        #[allow(dead_code)]
         pub fn fill_with_x(&mut self){
             self.board = [
                         ['X','X','X'],
