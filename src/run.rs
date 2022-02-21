@@ -1,7 +1,7 @@
 use crate::game::game::Board;
 use crate::player::player::Type;
 pub struct Run{
-    board_instance : Board
+    pub board_instance : Board
 }
 #[allow(dead_code)]
 macro_rules! input {
@@ -78,14 +78,16 @@ impl Run{
             char_type:Type::TypeX,
             no_of_win : 0
         };
-        self.board_instance.print_board();
-        self.board_instance.put_x(1,1);
-        self.board_instance.put_x(1,2);
-        self.board_instance.put_x(1,3);
-        self.board_instance.print_board();
+        //self.board_instance.print_board();
+        //self.board_instance.put_o(1,1);
+        //self.board_instance.put_o(1,2);
+        //self.board_instance.put_o(1,3);
+        //self.board_instance.print_board();
         match self.win_check() {
             Type::TypeX => println!("I am a fucking god"),
-            _ => println!("I am just a fucking human with shitty mind")
+            Type::TypeO => println!("Oh holy god fuck me"),
+            _ => println!("I am just a fucking human with shitty mind"),
+
         }
         
     }
@@ -99,18 +101,6 @@ impl Run{
         (n1, n2)
     }
     
-    fn win_check(&self) -> Type {  
-        if
-            (
-                &self.board_instance.board[0][0],
-                &self.board_instance.board[0][1],
-                &self.board_instance.board[0][2]
-            ) == (&'X',&'X',&'X'){
-                Type::TypeX
-            }
-            else {
-                Type::TypeO
-            }
-    }
+    
     
 }
