@@ -1,3 +1,5 @@
+use std::borrow::Borrow;
+
 use crate::game::game::Board;
 use crate::player::player::Type;
 pub struct Run{
@@ -57,37 +59,33 @@ impl Run{
         println!("The rules are simple. This is a 2 player tictactoe game..\n One with a row/column of same element wins.\n For more documentation refer to \n https://github.com/lordofwizard/tictactoe.git");
         println!("{} {}","Project Author :-".yellow(),"LordOfWizard".red());
     }
+
     #[allow(dead_code)]
     fn help(){
         Run::clear_screen();
         println!("Commands to play this game");
         println!("start - Starts the game.. obi");
         println!("exit - Stops the game and closes it");
-
     }
+
     fn game(&mut self){
         use crate::player::player::Player;
         let (p1_name,p2_name) = Run::players_names();
-        let Player1 :Player =  Player{
+        let mut Player1 :Player =  Player{
             name:p1_name,
             char_type:Type::TypeX,
             no_of_win : 0
         };
-        let Player1 :Player =  Player{
+        let mut Player1 :Player =  Player{
             name:p2_name,
             char_type:Type::TypeX,
             no_of_win : 0
         };
-        //self.board_instance.print_board();
-        //self.board_instance.put_o(1,1);
-        //self.board_instance.put_o(1,2);
-        //self.board_instance.put_o(1,3);
-        //self.board_instance.print_board();
-        match self.win_check() {
-            Type::TypeX => println!("I am a fucking god"),
-            Type::TypeO => println!("Oh holy god fuck me"),
-            _ => println!("I am just a fucking human with shitty mind"),
 
+        match self.win_check() {
+            Type::TypeX => println!("X wins"),
+            Type::TypeO => println!("O wins"),
+            _ => println!("Draw")
         }
         
     }
@@ -101,6 +99,23 @@ impl Run{
         (n1, n2)
     }
     
+    fn is_full(&mut self) -> bool{
+        let mut count = 0;
+        for i in 0..3 {
+            for j in 0..3{
+                if (&self.board_instance.board[i][j] == &'X' || &self.board_instance.board[i][j] == &'O'){
+                    count += 1;    
+                }
+            }
+        }
+        if (count == 9) {
+            return true;
+        }
+        else {
+            return false;
+        }
+            
+    }
     
     
 }

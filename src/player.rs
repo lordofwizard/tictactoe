@@ -1,7 +1,8 @@
 pub mod player{
     pub enum Type{
         TypeX,
-        TypeO
+        TypeO,
+        Draw
     }
     pub struct Player{
         pub name: String,
